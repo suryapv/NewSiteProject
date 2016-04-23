@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Configuration has a property status="debug" which adds debug log at the bootstrap time.
+	We do not need it now, hence removed. Other properties are:
+	name="XMLConfigTest"
+	packages="org.apache.logging.log4j.test"
+	 -->
+	 
+<Configuration strict="true">
+	
+	<Properties>
+		<Property name="filename">target/nslog</Property>
+	</Properties>
+
+	<Appenders>
+	
+		<Appender type="Console" name="STDOUT">
+			<Layout type="PatternLayout" pattern="%d %p [%t] %C{1} %m%n"/>
+		</Appender>
+		
+		<Appender type="File" name="FILE" fileName="${filename}.txt"  append="true">
+			<Layout type="PatternLayout" pattern="%d %p [%t] %C{1.} %m%n"/>
+		</Appender>
+		
+		<Appender type="JsonFile" name="JSONFILE" fileName="${filename}.json"  append="true">			
+			<Layout type="JSONLayout" complete="true" compact="true" />
+		</Appender>
+		
+	</Appenders>
+
+	<Loggers>
+	
+		<Logger name="ConsoleOnly" level="debug" additivity="false">
+			<AppenderRef ref="STDOUT" />
+		</Logger>
+
+		<Logger name="ConsoleAndFile"  additivity="false" level="debug">
+			<AppenderRef ref="FILE" />
+			<AppenderRef ref="STDOUT" />
+		</Logger>
+		
+	</Loggers>
+
+</Configuration>

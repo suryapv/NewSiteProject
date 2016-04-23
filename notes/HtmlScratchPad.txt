@@ -1,0 +1,183 @@
+1.
+---------------------------------------------------------------------------------------------------
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>21 Century Politics</title>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$("button").click(function() {
+			$.getJSON("/article", function(data, status) {
+				alert("Data: " + JSON.stringify(data));
+			});
+		});
+	});
+</script>
+</head>
+  <body>
+    <p><span style="font-weight: bold;">21Century Politics</span></p>
+    <hr style="width: 100%; height: 2px; color: red;" />
+    <button>Get Data</button>
+  </body>
+</html>
+===================================================================================================
+2.
+---------------------------------------------------------------------------------------------------
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>21 Century Politics</title>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$.getJSON("/article", function(data, status) {
+			alert("Data: " + JSON.stringify(data));
+		});
+	});
+</script>
+</head>
+  <body>
+    <p><span style="font-weight: bold;">21Century Politics</span></p>
+    <hr style="width: 100%; height: 2px; color: red;" />
+  </body>
+</html>
+===================================================================================================
+3. Working
+---------------------------------------------------------------------------------------------------
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>21 Century Politics</title>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$.getJSON("/article", function(data, status) {
+			document.body.appendChild(document.createElement('pre')).innerHTML = JSON.stringify(data);
+		});
+	});
+</script>
+</head>
+  <body>
+    <p><span style="font-weight: bold;">21Century Politics</span></p>
+    <hr style="width: 100%; height: 2px; color: red;" />
+  </body>
+</html>
+===================================================================================================
+4. Working
+---------------------------------------------------------------------------------------------------
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>21 Century Politics</title>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$.getJSON("/article", function(data, status) {
+			for(var row in data){
+				document.body.appendChild(document.createElement('pre')).innerHTML = JSON.stringify(data[row]) + "<br />";
+				//document.write("<br />");
+			}
+		});
+	});
+</script>
+</head>
+  <body>
+    <p><span style="font-weight: bold;">21Century Politics</span></p>
+    <hr style="width: 100%; height: 2px; color: red;" />
+  </body>
+</html>
+===================================================================================================
+5. Not so working
+---------------------------------------------------------------------------------------------------
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>21 Century Politics</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script>
+	$(document).ready(function() {
+		$.getJSON("/article", function(data, status) {
+			for(var row in data){
+				var article = data[row];
+				
+				//prints the how row, keep it for debugging purposes as needed
+				//document.body.appendChild(document.createElement('pre')).innerHTML = JSON.stringify(article) + "<br />";				
+				//document.body.appendChild(document.createElement('pre')).innerHTML = article.title + " " + article.authors + " " + article.url + " <br />";
+				
+				document.body.appendChild(document.createElement('pre')).innerHTML = "&lt;a  style=&quot;font-weight: bold;&quot; href=" + article.url + "&gt;" + article.title + 
+					"&lt;/a&gt; by &lt;span style=&quot;font-style: italic;&quot;&gt;" + article.authors + "&lt;/span&gt; &lt;br /&gt;";	
+			}
+		});
+	});
+</script>
+</head>
+<body>
+	<p>
+		<span style="font-weight: bold;">21Century Politics</span>
+	</p>
+	<hr style="width: 100%; height: 2px; color: red;" />
+</body>
+</html>
+
+Output:
+
+<a  style="font-weight: bold;" href="http://www.21centurypolitics.com/2015/06/resurgent-bengal.html">Resurgent Bengal?</a> by <span style="font-style: italic;">Umesh Patil</span> <br />
+<a  style="font-weight: bold;" href="http://www.21centurypolitics.com/2015/06/rewriting-iraq-history.html">Rewriting Iraq History</a> by <span style="font-style: italic;">Umesh Patil</span> <br />
+<a  style="font-weight: bold;" href="http://www.21centurypolitics.com/2015/05/time-to-cleanse-corrupt-fifa.html">Time to Cleanse Corrupt FIFA</a> by <span style="font-style: italic;">Umesh Patil</span> <br />
+
+===================================================================================================
+5. 
+---------------------------------------------------------------------------------------------------
+
+<span style="font-style: italic;"> by Umesh Patil</span>	
+===================================================================================================
+6. Working
+---------------------------------------------------------------------------------------------------
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>21 Century Politics</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script>
+	$(document).ready(function() {
+		$.getJSON("/article", function(data, status) {
+			for(var row in data){
+				var article = data[row];
+				
+				//prints rows, keep it for debugging purposes as needed
+				//document.body.appendChild(document.createElement('pre')).innerHTML = JSON.stringify(article) + "<br />";				
+				//document.body.appendChild(document.createElement('pre')).innerHTML = article.title + " " + article.authors + " " + article.url + " <br />";
+
+				var $line = $('<div></div>');
+				$line.append('<a href="'+article.url+'">'+article.title+'</a>');
+				$line.append('<span> by </span>');
+				$line.append('<span style="font-style:italic;">'+article.authors+'</span>');
+				
+				$('body').append($line);
+				
+			}
+			document.body.appendChild(document.createElement('pre')).innerHTML = "Commentary <br/>";
+		});
+	});
+</script>
+</head>
+<body>
+	<p>
+		<span style="font-weight: bold; color: red; font-size:30px">21Century Politics</span>
+	</p>
+	<hr style="width: 100%; height: 2px; color: black;" />
+	<p> <span style="font-weight: bold;">Recent Blog Posts</span>
+	</p>
+</body>
+</html>

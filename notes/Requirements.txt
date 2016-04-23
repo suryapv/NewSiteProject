@@ -1,0 +1,12 @@
+1. Fixed roles:	admin (all privileges)
+				contributor (add comment, add blog post)
+				
+2. Fixed users: umesh (admin)
+				uday (contributor)
+				ratnakar (contributor)
+				
+3. APIs
+
+	a)	List of most recent 'n' contributions
+	b)	List of most recent 'n' commentories 
+	c)	Search by author, title and tags

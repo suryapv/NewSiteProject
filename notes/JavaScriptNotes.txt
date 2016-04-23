@@ -1,0 +1,29 @@
+http://stackoverflow.com/questions/4810841/how-can-i-pretty-print-json-using-javascript
+===================================================================================================
+2.
+---------------------------------------------------------------------------------------------------
+<script type="text/javascript">
+<!--
+var linebreak = "<br />";
+document.write("For loop code is beginning");
+document.write(linebreak);
+
+for(i = 0; i < 5; i++){
+	document.write("Counter i = " + i);
+	document.write(linebreak);
+}
+
+document.write("For loop code is finished!");
+</script>
+
+For loop code is beginning
+Counter i = 0
+Counter i = 1
+Counter i = 2
+Counter i = 3
+Counter i = 4
+For loop code is finished!
+
+===================================================================================================
+3.
+---------------------------------------------------------------------------------------------------

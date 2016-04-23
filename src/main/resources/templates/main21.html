@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>21 Century Politics</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script>
+	$(document).ready(function() {
+		$.getJSON("/article", function(data, status) {
+			for(var row in data){
+				var article = data[row];
+				var $line = $('<div></div>');
+				$line.append('<a href="'+article.url+'">'+article.title+'</a>');				
+				$line.append('<span style="font-style:italic; font-size:10pt">  by '+article.authors+'</span>');				
+				$('body').append($line);				
+			}
+			document.body.appendChild(document.createElement('pre')).innerHTML = "Commentary <br/>";
+		});
+	});
+</script>
+</head>
+<body>
+	<p>
+		<span style="font-weight: bold; color: red; font-size:30px">21Century Politics</span>
+	</p>
+	<hr style="width: 100%; height: 2px; color: black;" />
+	<p> <span style="font-weight: bold;">Recent Blog Posts</span>
+	</p>
+</body>
+</html>
